@@ -1,6 +1,8 @@
 # wmts_getfeatureinfo_by_leaflet
 WMTS GetFeatureInfo by Leaflet
 
+`Demo`: https://soiqualang.github.io/wmts_getfeatureinfo_by_leaflet/
+
 <img src="img/h1.png" width="100%">
 
 ### Add WMTS
