@@ -16,6 +16,7 @@ function getFeatureInfo(evt) {
 }
 
 function getFeatureInfoUrl(evt) {
+	t3=evt;
 	latlng=evt.latlng;
 	var point = map.latLngToContainerPoint(latlng, map.getZoom());
 	var size = map.getSize();
@@ -24,14 +25,8 @@ function getFeatureInfoUrl(evt) {
 	var width=size.x;
 	width=Math.round(width);
 	
-	console.table(height,width);
+	//console.table(height,width);
 	
-	var x=evt.containerPoint.x;
-	var y=evt.containerPoint.y;
-	
-	var tilecol=evt.originalEvent.screenX;
-	var tilerow=evt.originalEvent.screenY;
-		
 	/* var params = {
 	  VERSION: '1.0.0',
 	  LAYER: 'thuadat:view_duynghia_4326',
