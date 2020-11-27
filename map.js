@@ -1,5 +1,10 @@
 wms_service='https://geo.dothanhlong.org/geoserver/thuadat/wms?';
-wmts_service='https://geo.dothanhlong.org/geoserver/gwc/service/wmts?layer=thuadat:view_duynghia_4326&style=&tilematrixset=EPSG:900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=EPSG:900913:{z}&TileCol={x}&TileRow={y}';	
+
+//Kieu tile map
+//Cach 1 - kieu tile map mac dinh cua geoserver
+wmts_service='https://geo.dothanhlong.org/geoserver/gwc/service/wmts?layer=thuadat:view_duynghia_4326&style=&tilematrixset=EPSG:900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=EPSG:900913:{z}&TileCol={x}&TileRow={y}';
+//Cach 2 - format kieu slippy map tilenames
+wmts_service_v2='https://geo.dothanhlong.org/geoserver/gwc/service/tms/1.0.0/thuadat:view_duynghia_4326@EPSG:900913@png/{z}/{x}/{-y}.png';
 
 //Khai bao ban do nen
 mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -15,8 +20,14 @@ var topo = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
 });	
 
 
-//Them ban do thua dat	
+//Them ban do thua dat dang tiles map
+//Cach 1
 var duynghia_quangnam = new L.TileLayer(wmts_service, {
+  continuousWorld: true,
+  attribution: 'tiles &copy; <a href="https://dothanhlong.org">dothanhlong.org</a>',
+});
+//Cach 2
+var duynghia_quangnam_v2 = new L.TileLayer(wmts_service_v2, {
   continuousWorld: true,
   attribution: 'tiles &copy; <a href="https://dothanhlong.org">dothanhlong.org</a>',
 });
@@ -58,7 +69,8 @@ var baseLayers = {
 //Ban do chuyen de
 var overlays = {		
 	"Bản đồ Topo": topo,
-	"Thửa đất": duynghia_quangnam,
+	"Thửa đất (tiles type 1)": duynghia_quangnam,
+	"Thửa đất (tiles type 2)": duynghia_quangnam_v2,
 	"GIRD": t1()
 };
 
